@@ -1,0 +1,60 @@
+{
+  "name": "Blue Frequency",
+  "name_ru": "Синяя частота",
+  "version": "1.0.0",
+  "author": "Novel Engine Team",
+  "description": "Psychological horror visual novel about guilt, memory, and redemption",
+  "description_ru": "Психологический хоррор о вине, памяти и искуплении",
+  "start_scene": "prologue.start",
+  "chapters": [
+    {
+      "id": "prologue",
+      "name": "Prologue",
+      "name_ru": "Пролог",
+      "file": "prologue.json"
+    },
+    {
+      "id": "chapter1",
+      "name": "Chapter 1: Whispers in the Walls",
+      "name_ru": "Глава 1: Шёпот в стенах",
+      "file": "chapter1.json"
+    },
+    {
+      "id": "chapter2",
+      "name": "Chapter 2: Descent",
+      "name_ru": "Глава 2: Спуск",
+      "file": "chapter2.json"
+    },
+    {
+      "id": "chapter3",
+      "name": "Chapter 3: The Basement",
+      "name_ru": "Глава 3: Подвал",
+      "file": "chapter3.json"
+    },
+    {
+      "id": "end",
+      "name": "Endings",
+      "name_ru": "Концовки",
+      "file": "endings.json"
+    }
+  ],
+  "settings": {
+    "default_coins": 100,
+    "min_coins": 0,
+    "max_coins": 200,
+    "allow_negative_coins": false
+  },
+  "themes": {
+    "primary": "#1a0a2e",
+    "secondary": "#4a1942",
+    "accent": "#ff6b6b",
+    "text": "#e0e0e0"
+  },
+  "warnings": [
+    "psychological_horror",
+    "death",
+    "child_death",
+    "substance_abuse",
+    "guilt"
+  ]
+}

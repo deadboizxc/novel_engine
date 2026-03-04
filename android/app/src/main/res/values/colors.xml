@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    =============================================================================
+    TUI Novel - Цветовая палитра
+    =============================================================================
+-->
+<resources>
+    <!-- Основные цвета терминала -->
+    <color name="terminal_green">#00FF00</color>
+    <color name="terminal_green_dim">#008800</color>
+    <color name="terminal_green_bright">#44FF44</color>
+    
+    <!-- Фоны -->
+    <color name="background_black">#000000</color>
+    <color name="background_dark">#0A0A0A</color>
+    
+    <!-- Психоделические эффекты -->
+    <color name="psycho_red">#FF0000</color>
+    <color name="psycho_magenta">#FF00FF</color>
+    <color name="psycho_cyan">#00FFFF</color>
+    <color name="psycho_yellow">#FFFF00</color>
+    <color name="psycho_purple">#8800FF</color>
+    
+    <!-- Ошибки и предупреждения -->
+    <color name="error_red">#FF3333</color>
+    <color name="warning_yellow">#FFAA00</color>
+    
+    <!-- Глитч эффекты -->
+    <color name="glitch_scanline">#11FF1108</color>
+    <color name="glitch_noise">#FFFFFF22</color>
+    
+    <!-- Launcher Icon -->
+    <color name="ic_launcher_background">#000000</color>
+</resources>

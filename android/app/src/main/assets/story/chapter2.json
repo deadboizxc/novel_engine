@@ -1,0 +1,66 @@
+{
+  "chapter2.start": {
+    "bg": "stairway_dark",
+    "text": "Глава 2: Лестница вниз\n\nЛестница ведёт в подвал.\nКаждая ступень — **воспоминание**.\nТы спускаешься.",
+    "actions": [
+      { "animate": { "type": "glitch", "duration": 1.5 } }
+    ],
+    "choices": [
+      { "text": "Продолжить спуск", "next": "descent" },
+      { "text": "Вернуться наверх", "next": "return_up" }
+    ]
+  },
+  "chapter2.descent": {
+    "text": "Темнее.\nХолоднее.\n\nНа стенах — фотографии.\nТвоя семья.\nНо лица — **размыты**.",
+    "choices": [
+      { "text": "Рассмотреть фото", "next": "examine_photos" },
+      { "text": "Идти дальше", "next": "basement_door" }
+    ]
+  },
+  "chapter2.examine_photos": {
+    "text": "Ты всматриваешься.\n\nЖена. Дочь. Ты.\n\nНо на одном фото — **четыре тени**.\nКто четвёртый?",
+    "actions": [
+      { "set_flag": "photos_seen" },
+      { "add_coin": -10 }
+    ],
+    "choices": [
+      { "text": "Снять фото со стены", "next": "take_photo" },
+      { "text": "Идти к двери", "next": "basement_door" }
+    ]
+  },
+  "chapter2.take_photo": {
+    "text": "Фото в руках.\nОборотная сторона:\n\n> *\"Он всегда был с нами.\n> Ты просто не видел.\"*\n\nПочерк — **твой**.",
+    "actions": [
+      { "add_item": "family_photo" },
+      { "add_coin": -15 }
+    ],
+    "choices": [
+      { "text": "Идти к двери", "next": "basement_door" }
+    ]
+  },
+  "chapter2.basement_door": {
+    "text": "Дверь в подвал.\nСтарая. Деревянная.\n\nЗа ней — **детский голос**:\n\n> *\"Папа, я тебя ждала.\"*",
+    "choices": [
+      { "text": "Открыть дверь", "next": "open_door" },
+      { "text": "Убежать", "jump": "end.eternal_wait" }
+    ]
+  },
+  "chapter2.open_door": {
+    "text": "Дверь скрипит.\n\nТемнота.\n\nИ в ней — **силуэт девочки**.",
+    "actions": [
+      { "animate": { "type": "static", "duration": 2 } }
+    ],
+    "choices": [
+      { "text": "Войти", "jump": "chapter3.start" }
+    ]
+  },
+  "chapter2.return_up": {
+    "text": "Ты разворачиваешься.\n\nНо лестницы **больше нет**.\n\nТолько — стена.\n\nИ шёпот:\n\n> *\"Ты не уйдёшь.\"*",
+    "actions": [
+      { "add_coin": -20 }
+    ],
+    "choices": [
+      { "text": "Спуститься", "next": "descent" }
+    ]
+  }
+}

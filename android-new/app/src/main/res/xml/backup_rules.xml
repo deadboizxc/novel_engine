@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Правила полного бэкапа для Android 11 и ниже
+-->
+<full-backup-content>
+    <!-- Включаем только сохранения игры -->
+    <include domain="file" path="saves/" />
+    <include domain="file" path="config.json" />
+</full-backup-content>

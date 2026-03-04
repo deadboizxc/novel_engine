@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    =============================================================================
+    Novel Engine - Строковые ресурсы
+    =============================================================================
+-->
+<resources>
+    <string name="app_name">Novel Engine</string>
+    <string name="loading">Загрузка...</string>
+    <string name="input_hint">Выберите действие...</string>
+    <string name="error_python">Ошибка загрузки</string>
+    <string name="press_enter">Нажмите для продолжения</string>
+    <string name="connecting">Загрузка истории...</string>
+</resources>

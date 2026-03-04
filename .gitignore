@@ -23,6 +23,7 @@ CMakeFiles/
 cmake_install.cmake
 Makefile
 compile_commands.json
+.cxx/
 
 # ─────────────────────────────────────────────────────────────────────────────────
 # IDE / Editor
@@ -52,15 +53,21 @@ venv/
 .mypy_cache/
 
 # ─────────────────────────────────────────────────────────────────────────────────
-# Kotlin / Gradle
+# Kotlin / Gradle / Android
 # ─────────────────────────────────────────────────────────────────────────────────
 .gradle/
+.kotlin/
 local.properties
 *.iml
+app/build/
+*/app/build/
 gui/android/.cxx/
 gui/android/app/build/
 gui/desktop/build/
 gui/shared/build/
+gui/build/
+android/app/build/
+android-new/app/build/
 
 # ─────────────────────────────────────────────────────────────────────────────────
 # Go

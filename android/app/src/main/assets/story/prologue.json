@@ -1,0 +1,172 @@
+{
+  "prologue.start": {
+    "bg": "room_dark",
+    "text": "Ты открываешь глаза.\nКомната — как фотография, застывшая во времени.\nЧасы на стене: **03:17**.\nЭто уже четвёртый раз за ночь.\nИли... за всю жизнь?",
+    "choices": [
+      { "text": "Проверить телефон", "next": "phone_check" },
+      { "text": "Включить свет", "next": "light_on" },
+      { "text": "Закрыть глаза. Ещё раз.", "next": "sleep_loop" }
+    ]
+  },
+  "prologue.phone_check": {
+    "text": "Экран мигает. Новое сообщение от **\"Неизвестный\"**:\n\n> *\"Ты всё ещё думаешь, что это сон?\n> Посмотри на фото. Это ты. Но ты его не делал.\"*\n\nПод текстом — селфи. Ты улыбаешься.\nНо **ты не помнишь, когда улыбался**.",
+    "actions": [
+      { "add_coin": -8 },
+      { "set_flag": "phone_message_seen" }
+    ],
+    "choices": [
+      { "text": "Удалить", "next": "delete_msg" },
+      { "text": "Ответить: «Кто ты?»", "next": "reply_unknown" }
+    ]
+  },
+  "prologue.delete_msg": {
+    "text": "Сообщение удалено.\nНо фото остаётся.\nТы увеличиваешь — в отражении в окне за спиной кто-то стоит.\n**Ты не один на фото.**",
+    "choices": [
+      { "text": "Сфотографировать экран", "next": "photo_glitch" },
+      { "text": "Выключить телефон", "next": "light_on" }
+    ]
+  },
+  "prologue.photo_glitch": {
+    "text": "*Клик.*\nКамера срабатывает.\nНа экране — **не телефон**, а **ты**.\nСтоишь за спиной.\nГлаза — чёрные провалы.\nУлыбка — до ушей.\n**Ты не двигался.**",
+    "actions": [
+      { "animate": { "type": "static", "duration": 2 } },
+      { "add_coin": -15 },
+      { "set_flag": "shadow_selfie" }
+    ],
+    "choices": [
+      { "text": "[Крикнуть]", "next": "scream_intro" },
+      { "text": "[Замереть]", "next": "freeze_intro" }
+    ]
+  },
+  "prologue.reply_unknown": {
+    "text": "Ты: *«Кто ты?»*\n\nОтвет мгновенно:\n\n> *\"Тот, кем ты станешь, если не примешь таблетки.\n> Она ждёт. В подвале. Не ходи туда.\"*",
+    "actions": [
+      { "add_coin": -12 },
+      { "set_flag": "shadow_reply" }
+    ],
+    "choices": [
+      { "text": "Найти таблетки", "next": "find_pills" },
+      { "text": "Выбросить телефон", "next": "throw_phone" }
+    ]
+  },
+  "prologue.throw_phone": {
+    "text": "Телефон разбивается о стену.\nНо вибрация — в голове.\n*Бззз... Бззз...*\nГолос шепчет: *\"Папа...\"*",
+    "actions": [
+      { "add_coin": -20 }
+    ],
+    "choices": [
+      { "text": "Выйти в коридор", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.light_on": {
+    "bg": "room_light",
+    "text": "Лампочка мигает. Гаснет.\nВ зеркале — ты.\nНо **он моргает, когда ты не моргаешь**.\nЕго губы шевелятся:\n\n> *\"Ты убил её. Снова.\"*",
+    "choices": [
+      { "text": "Разбить зеркало", "next": "break_mirror" },
+      { "text": "Отвернуться", "next": "turn_away" },
+      { "text": "Подойти ближе", "next": "approach_mirror" }
+    ]
+  },
+  "prologue.break_mirror": {
+    "text": "Осколки летят.\nИз одного — **детская рука**.\nХватает за запястье.\nТянет внутрь.\nТы чувствуешь холод стекла на коже.",
+    "actions": [
+      { "add_coin": -25 },
+      { "set_flag": "mirror_broken" }
+    ],
+    "choices": [
+      { "text": "Вырваться", "next": "escape_mirror" },
+      { "text": "Позволить утянуть", "jump": "end.mirror_prison" }
+    ]
+  },
+  "prologue.escape_mirror": {
+    "text": "Ты вырываешься.\nРука исчезает.\nНо на запястье — следы пальцев.\n**Детских.**",
+    "choices": [
+      { "text": "Выйти в коридор", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.turn_away": {
+    "text": "Ты отворачиваешься.\nШаги. Босые. Мелкие.\nЗа спиной.\n**Ты знаешь этот звук.**",
+    "choices": [
+      { "text": "Обернуться", "next": "look_back" },
+      { "text": "Бежать", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.look_back": {
+    "text": "Пусто.\nНо на зеркале — надпись кровью:\n\n> *\"Ая ждёт в подвале.\"*",
+    "actions": [
+      { "add_coin": -18 },
+      { "set_flag": "aya_name_seen" }
+    ],
+    "choices": [
+      { "text": "Выйти", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.approach_mirror": {
+    "text": "Ты подходишь.\nОтражение — **не ты**.\nОно старше. Глаза красные.\nВ руках — нож.\nОно шепчет:\n\n> *\"Ты забыл её имя. Но я — помню.\"*",
+    "choices": [
+      { "text": "Спросить: «Кто она?»", "next": "ask_mirror" },
+      { "text": "Ударить", "jump": "end.mirror_shatter_death" }
+    ]
+  },
+  "prologue.ask_mirror": {
+    "text": "> *\"Ая. Твоя дочь. Ты убил её.\n> Таблетки — чтобы забыть.\n> Но она не уходит.\"*",
+    "actions": [
+      { "add_coin": -30 },
+      { "set_flag": "daughter_revealed_early" }
+    ],
+    "choices": [
+      { "text": "Выйти из комнаты", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.sleep_loop": {
+    "text": "Ты засыпаешь.\nПросыпаешься.\n**03:17.**\nЭто уже не сон.\nЭто — **твоя тюрьма.**",
+    "actions": [
+      { "add_coin": -35 },
+      { "increment": "loop_count" }
+    ],
+    "choices": [
+      {
+        "text": "Попробовать ещё раз",
+        "next": "sleep_loop",
+        "conditions": [{ "var": "loop_count", "less": 3 }]
+      },
+      { "text": "Встать. Навсегда.", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.scream_intro": {
+    "text": "Ты кричишь.\nСтены дрожат.\nИз вентиляции — детский смех.\n\n> *\"Папа, ты дома?\"*",
+    "actions": [
+      { "add_coin": -20 }
+    ],
+    "choices": [
+      { "text": "Замолчать", "next": "light_on" }
+    ]
+  },
+  "prologue.freeze_intro": {
+    "text": "Ты замираешь.\nТень за спиной — **движется**.\nПодходит.\nДышит в затылок.\n**Ты не дышишь.**",
+    "actions": [
+      { "add_coin": -25 }
+    ],
+    "choices": [
+      { "text": "Обернуться", "jump": "end.shadow_embrace" },
+      { "text": "Бежать", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.find_pills": {
+    "text": "В ящике — блистер.\nОдна голубая капсула.\nНа обороте — надпись:\n\n> *\"Принимай, пока не забудешь её имя.\"*",
+    "actions": [
+      { "increment": "pills_taken" },
+      { "add_coin": 15 }
+    ],
+    "choices": [
+      { "text": "Проглотить", "next": "pill_effect_intro" },
+      { "text": "Спрятать", "jump": "chapter1.start" }
+    ]
+  },
+  "prologue.pill_effect_intro": {
+    "text": "Горькая.\nМир — чётче.\nНо стены — **дышат**.\nГолос в голове:\n\n> *\"Ты снова предал её.\"*",
+    "choices": [
+      { "text": "Выйти", "jump": "chapter1.start" }
+    ]
+  }
+}

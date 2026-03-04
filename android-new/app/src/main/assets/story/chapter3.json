@@ -1,0 +1,81 @@
+{
+  "chapter3.start": {
+    "bg": "basement_dark",
+    "text": "Глава 3: Подвал\n\nПодвал. Холод. Запах сырости.\n\nВ центре — **она**.\n\nАя.\n\nТвоя дочь.",
+    "actions": [
+      { "set_flag": "met_aya" }
+    ],
+    "choices": [
+      { "text": "Подойти", "next": "approach_aya" },
+      { "text": "Позвать по имени", "next": "call_aya" }
+    ]
+  },
+  "chapter3.approach_aya": {
+    "text": "Ты делаешь шаг.\n\nОна поворачивается.\n\nГлаза — **пустые**.\n\n> *\"Ты забыл меня, папа.\n> Но я — помню всё.\"*",
+    "choices": [
+      { "text": "Извиниться", "next": "apologize" },
+      { "text": "Спросить, что случилось", "next": "ask_what_happened" }
+    ]
+  },
+  "chapter3.call_aya": {
+    "text": "— Ая?\n\nОна медленно оборачивается.\n\n> *\"Ты помнишь моё имя.\n> Но ты забыл, что сделал.\"*",
+    "actions": [
+      { "add_coin": 10 }
+    ],
+    "choices": [
+      { "text": "Что я сделал?", "next": "ask_what_happened" }
+    ]
+  },
+  "chapter3.apologize": {
+    "text": "— Прости меня.\n\nОна качает головой.\n\n> *\"Слова не вернут меня.\n> Но ты можешь остаться.\"*",
+    "choices": [
+      { "text": "Остаться с ней", "jump": "end.sacrifice" },
+      { "text": "Попросить прощения", "next": "beg_forgiveness" }
+    ]
+  },
+  "chapter3.ask_what_happened": {
+    "text": "Она показывает на стену.\n\nТам — **фотографии**.\n\nАвария. Больница. Похороны.\n\n> *\"Ты пил. Ты вёл машину.\n> Я — на заднем сиденье.\"*",
+    "actions": [
+      { "add_coin": -50 },
+      { "set_flag": "truth_revealed" }
+    ],
+    "choices": [
+      { "text": "Вспомнить", "next": "remember" },
+      { "text": "Отрицать", "next": "deny" }
+    ]
+  },
+  "chapter3.remember": {
+    "text": "Воспоминания — как осколки.\n\nРуль. Бутылка. Крик.\n\n**Удар.**\n\nТишина.",
+    "actions": [
+      { "animate": { "type": "glitch", "duration": 3 } },
+      { "set_flag": "remembered" }
+    ],
+    "choices": [
+      { "text": "Принять правду", "next": "accept" },
+      { "text": "Сбежать от правды", "jump": "end.forgotten_loop" }
+    ]
+  },
+  "chapter3.deny": {
+    "text": "— Нет. Это неправда.\n\nОна улыбается.\n\n> *\"Тогда продолжай забывать.\n> Я подожду.\"*",
+    "actions": [
+      { "add_coin": -30 }
+    ],
+    "choices": [
+      { "text": "Уйти", "jump": "end.forgotten_loop" }
+    ]
+  },
+  "chapter3.beg_forgiveness": {
+    "text": "Ты падаешь на колени.\n\n— Прости. Пожалуйста.\n\nОна кладёт руку на твою голову.\n\n> *\"Прощение — не в словах.\n> Оно — в памяти.\"*",
+    "choices": [
+      { "text": "Помнить её", "jump": "end.accept_truth" },
+      { "text": "Забыть навсегда", "jump": "end.overdose" }
+    ]
+  },
+  "chapter3.accept": {
+    "text": "Ты принимаешь.\n\nБоль. Вину. Правду.\n\nОна улыбается. Впервые — по-настоящему.\n\n> *\"Теперь — отпусти.\"*",
+    "choices": [
+      { "text": "Отпустить", "jump": "end.break_cycle" },
+      { "text": "Держаться за неё", "jump": "end.sacrifice" }
+    ]
+  }
+}
