@@ -1,0 +1,88 @@
+{
+  "chapter1.start": {
+    "bg": "hallway_dim",
+    "text": "Глава 1: Шёпот в стенах\n\nКоридор — как живая вена.\nПульсирует.\nДышит.\nОдна дверь — в ванную.",
+    "music": "ambient_dread",
+    "choices": [
+      { "text": "Войти в ванную", "next": "bathroom_entry" },
+      { "text": "Идти дальше", "next": "hallway_deeper" },
+      { "text": "Кричать", "next": "scream_ch1" }
+    ]
+  },
+  "chapter1.bathroom_entry": {
+    "bg": "bathroom_bloody",
+    "text": "Ванна — полна **красной воды**.\nНа зеркале — надпись пальцем:\n\n> *\"ПРИМИ ТАБЛЕТКИ. ОНА ЖДЁТ.\"*\n\nПод краном — **одна капсула**.",
+    "choices": [
+      { "text": "Взять таблетку", "next": "take_pill_ch1" },
+      { "text": "Смыть надпись", "next": "wash_mirror" },
+      { "text": "Заглянуть в ванну", "next": "check_bathtub" }
+    ]
+  },
+  "chapter1.take_pill_ch1": {
+    "text": "Капсула — как лёд во рту.\nМир — стабилизируется.\nНо стены — **шепчут её имя**.",
+    "actions": [
+      { "increment": "pills_taken" },
+      { "add_coin": 25 },
+      { "set_flag": "pill_taken_ch1" }
+    ],
+    "choices": [
+      { "text": "Выйти", "jump": "chapter2.start" }
+    ]
+  },
+  "chapter1.wash_mirror": {
+    "text": "Вода не смывает.\nНадпись **становится ярче**.\nКровь течёт по стеклу.\nФормирует лицо.\n**Её лицо.**",
+    "actions": [
+      { "add_coin": -20 }
+    ],
+    "choices": [
+      { "text": "Ударить зеркало", "jump": "end.mirror_bleed" },
+      { "text": "Уйти", "jump": "chapter2.start" }
+    ]
+  },
+  "chapter1.check_bathtub": {
+    "text": "В воде — **ты**.\nНо ты стоишь снаружи.\nОтражение машет.\nПоднимается.\n**Выходит из ванны.**",
+    "actions": [
+      { "add_coin": -30 }
+    ],
+    "choices": [
+      { "text": "Бежать", "jump": "chapter2.start" },
+      { "text": "Остаться", "jump": "end.doppelganger_rise" }
+    ]
+  },
+  "chapter1.hallway_deeper": {
+    "text": "Коридор сужается.\nНа полу — **детские рисунки**:\n- Дом.\n- Солнце.\n- Ты с ножом в груди.\n- Подпись: *\"Папа обещал\"*",
+    "choices": [
+      { "text": "Поднять", "next": "pick_drawing" },
+      { "text": "Идти дальше", "jump": "chapter2.start" }
+    ]
+  },
+  "chapter1.pick_drawing": {
+    "text": "Оборот:\n\n> *\"Ты сказал, что защитишь меня.\n> Почему ты пьёшь таблетки?\"*\n\nРисунок — **твоя рука**.",
+    "actions": [
+      { "add_coin": -25 },
+      { "set_flag": "drawing_found" }
+    ],
+    "choices": [
+      { "text": "Сохранить", "next": "hallway_deeper" },
+      { "text": "Сжечь", "next": "burn_drawing" }
+    ]
+  },
+  "chapter1.burn_drawing": {
+    "text": "Рисунок горит.\nПламя — **синие глаза**.\nГолос:\n\n> *\"Ты снова это сделал.\"*",
+    "actions": [
+      { "add_coin": -40 }
+    ],
+    "choices": [
+      { "text": "Бежать", "jump": "chapter2.start" }
+    ]
+  },
+  "chapter1.scream_ch1": {
+    "text": "Ты кричишь.\nСтены — **отвечают**.\nДетский хор:\n\n> *\"Папа... папа... папа...\"*",
+    "actions": [
+      { "add_coin": -15 }
+    ],
+    "choices": [
+      { "text": "Замолчать", "next": "start" }
+    ]
+  }
+}
