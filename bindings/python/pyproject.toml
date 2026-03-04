@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "novel-engine"
+version = "2.0.0"
+description = "Cross-platform visual novel engine with C core"
+readme = "../../README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "deadboizxc"}
+]
+keywords = ["visual-novel", "game-engine", "tui", "interactive-fiction"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Games/Entertainment",
+]
+
+[project.scripts]
+novel-engine = "novel_engine.tui:main"
+
+[project.urls]
+Homepage = "https://github.com/deadboizxc/novel_engine"
+Repository = "https://github.com/deadboizxc/novel_engine"
+
+[tool.setuptools.packages.find]
+where = ["."]
