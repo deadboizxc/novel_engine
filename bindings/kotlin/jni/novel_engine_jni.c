@@ -20,6 +20,21 @@
 #include <string.h>
 #include "novel_engine.h"
 
+#ifdef __ANDROID__
+#include <android/log.h>
+#define LOG_TAG "NovelEngineJNI"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+#else
+#define LOGI(...)
+#define LOGE(...)
+#endif
+
+/* JNI version compatibility */
+#ifndef JNI_VERSION_1_6
+#define JNI_VERSION_1_6 0x00010006
+#endif
+
 /* ═══════════════════════════════════════════════════════════════════════════
  * JNI CLASS AND METHOD REFERENCES
  * ═══════════════════════════════════════════════════════════════════════════ */
@@ -44,9 +59,13 @@ static void jni_event_callback(void* user_data, const NE_Event* event) {
     int attached = 0;
 
     /* Get JNIEnv for current thread */
-    jint result = (*g_jvm)->GetEnv(g_jvm, (void**)&env, JNI_VERSION_1_8);
+    jint result = (*g_jvm)->GetEnv(g_jvm, (void**)&env, JNI_VERSION_1_6);
     if (result == JNI_EDETACHED) {
+#ifdef __ANDROID__
+        if ((*g_jvm)->AttachCurrentThread(g_jvm, &env, NULL) != 0) {
+#else
         if ((*g_jvm)->AttachCurrentThread(g_jvm, (void**)&env, NULL) != 0) {
+#endif
             return;
         }
         attached = 1;
@@ -65,7 +84,7 @@ static void jni_event_callback(void* user_data, const NE_Event* event) {
         j_scene_id,
         j_text,
         j_name,
-        (jint)event->value,
+        (jint)event->int_value,
         (jfloat)event->duration,
         (jboolean)event->bool_value
     );
@@ -87,7 +106,8 @@ static void jni_event_callback(void* user_data, const NE_Event* event) {
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void* reserved) {
     (void)reserved;
     g_jvm = vm;
-    return JNI_VERSION_1_8;
+    LOGI("JNI_OnLoad: Novel Engine JNI loaded");
+    return JNI_VERSION_1_6;
 }
 
 JNIEXPORT void JNICALL JNI_OnUnload(JavaVM* vm, void* reserved) {
@@ -233,7 +253,7 @@ Java_com_novelengine_engine_NovelEngine_nativeResetGame(
     if (!ctx || !start_scene) return;
 
     const char* scene_str = (*env)->GetStringUTFChars(env, start_scene, NULL);
-    ne_state_reset(ctx->engine, scene_str);
+    ne_game_reset(ctx->engine, scene_str);
     (*env)->ReleaseStringUTFChars(env, start_scene, scene_str);
 }
 
@@ -306,7 +326,7 @@ Java_com_novelengine_engine_NovelEngine_nativeSelectChoice(
     JNI_EngineContext* ctx = get_ctx(ptr);
     if (!ctx) return -1;
 
-    return (jint)ne_scene_select_choice(ctx->engine, index);
+    return (jint)ne_scene_select(ctx->engine, index);
 }
 
 JNIEXPORT jboolean JNICALL
@@ -418,7 +438,7 @@ Java_com_novelengine_engine_NovelEngine_nativeGetItemCount(
     if (!ctx || !item) return 0;
 
     const char* item_str = (*env)->GetStringUTFChars(env, item, NULL);
-    jint result = (jint)ne_state_get_item_count(ctx->engine, item_str);
+    jint result = (jint)ne_state_get_item(ctx->engine, item_str);
     (*env)->ReleaseStringUTFChars(env, item, item_str);
 
     return result;

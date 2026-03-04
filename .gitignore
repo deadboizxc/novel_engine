@@ -6,6 +6,7 @@
 # Build artifacts
 # ─────────────────────────────────────────────────────────────────────────────────
 build/
+build-*/
 cmake-build-*/
 *.o
 *.so
@@ -14,6 +15,14 @@ cmake-build-*/
 *.a
 *.lib
 *.exe
+*.apk
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
 
 # ─────────────────────────────────────────────────────────────────────────────────
 # IDE / Editor

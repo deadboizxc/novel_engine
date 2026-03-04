@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform") version "1.9.21"
     id("org.jetbrains.compose") version "1.5.11"
+    id("com.android.application") version "8.2.0"
 }
 
 group = "com.novelengine"
@@ -15,7 +16,14 @@ repositories {
 kotlin {
     jvm("desktop") {
         jvmToolchain(17)
-        withJava()
+    }
+    
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "17"
+            }
+        }
     }
     
     sourceSets {
@@ -42,7 +50,47 @@ kotlin {
                 implementation(compose.desktop.common)
             }
         }
+        
+        val androidMain by getting {
+            dependencies {
+                implementation("androidx.activity:activity-compose:1.8.2")
+                implementation("androidx.core:core-ktx:1.12.0")
+            }
+        }
     }
+}
+
+android {
+    namespace = "com.novelengine"
+    compileSdk = 34
+    
+    defaultConfig {
+        applicationId = "com.novelengine"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "2.0.0"
+        
+        ndk {
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+        }
+    }
+    
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    
+    sourceSets["main"].manifest.srcFile("android/src/main/AndroidManifest.xml")
+    sourceSets["main"].res.srcDirs("android/src/main/res")
+    sourceSets["main"].jniLibs.srcDirs("android/src/main/jniLibs")
 }
 
 compose.desktop {

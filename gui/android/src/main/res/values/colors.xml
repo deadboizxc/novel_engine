@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark theme colors for horror atmosphere -->
+    <color name="purple_dark">#1A0A2E</color>
+    <color name="purple_deep">#2D1B4E</color>
+    <color name="purple_mid">#4A1942</color>
+    <color name="pink_accent">#FF6B6B</color>
+    <color name="cyan_accent">#4ECDC4</color>
+    
+    <color name="background">#0D0D0D</color>
+    <color name="surface">#1A1A2E</color>
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#A0A0A0</color>
+    
+    <!-- Material colors -->
+    <color name="colorPrimary">#FF6B6B</color>
+    <color name="colorPrimaryDark">#1A0A2E</color>
+    <color name="colorAccent">#4ECDC4</color>
+</resources>
